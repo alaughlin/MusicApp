@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :must_be_logged_in, only: [:show]
 
   def new
     @user = User.new
@@ -34,6 +35,13 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email, :password)
+  end
+
+  def must_be_logged_in
+    if !signed_in?
+      flash[:errors] = "Must be signed in to view a profile!"
+      redirect_to new_session_url
+    end
   end
 
 end

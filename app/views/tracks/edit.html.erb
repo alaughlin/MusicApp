@@ -1,0 +1,61 @@
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error|%>
+    <%= error %><br />
+  <% end %>
+<% end %>
+
+<h1>Edit Track</h1>
+
+<form action="<%= track_url(@track) %>" method="post">
+  <input type="hidden" name="_method" value="put">
+  <%= auth_token %>
+
+  <label>
+    Track Title
+    <input type="text" name="track[title]" value="<%= @track.title %>">
+  </label>
+  <br>
+
+  <label>
+    Album
+    <select name="track[album_id]">
+      <% @albums.each do |album| %>
+        <option
+          value="<%= album.id %>"
+          <%= "selected" if params[:album_id].to_i == album.id %>>
+          <%= album.title %>
+        </option>
+      <% end %>
+    </select>
+  </label>
+  <br>
+
+  <label>
+    Track Number
+      <input type="number" name="track[track_number]" value="<%= @track.track_number %>">
+  </label>
+  <br>
+
+  <label>
+    Track Type
+    <br>
+    <label>
+      Regular
+      <input type="radio" name="track[track_type]" value="Regular">
+    </label>
+
+    <label>
+      Bonus
+      <input type="radio" name="track[track_type]" value="Bonus">
+    </label>
+  </label>
+  <br>
+
+  <label>
+    Lyrics
+    <textarea name="track[lyrics]"><%= @track.lyrics %></textarea>
+  </label>
+  <br>
+
+  <button>Edit Track</button>
+</form>

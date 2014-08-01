@@ -1,0 +1,18 @@
+<h1><%= @band.name %>'s Albums</h1>
+
+<table>
+  <th align="left">Title</th>
+  <% @band_albums.each do |album| %>
+  <tr>
+    <td><a href="<%= album_url(album) %>"><%= album.title %></a></td>
+    <td><%= button_to "Edit", edit_album_url(album), :method => :get %><td>
+    <td><%= button_to "Delete", album_url(album), :method => :delete %><td>
+  </tr>
+  <% end %>
+</table>
+<br>
+
+<a href="<%= new_band_album_url(@band) %>">Add Album</a>
+<br>
+
+<a href="<%= bands_url %>">Back To Bands Index</a>

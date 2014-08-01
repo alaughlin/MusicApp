@@ -1,0 +1,13 @@
+<h1>All The Bands!</h1>
+<table>
+  <% @bands.each do |band| %>
+  <tr>
+    <td><a href="<%= band_url(band) %>"><%= band.name %></a></td>
+    <td><%= button_to "Edit", edit_band_url(band), :method => :get %><td>
+    <td><%= button_to "Delete", band_url(band), :method => :delete %><td>
+  </tr>
+  <% end %>
+</table>
+<br>
+
+<a href="<%= new_band_url %>">Create a new band!</a>
