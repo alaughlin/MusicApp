@@ -1,4 +1,6 @@
 class BandsController < ApplicationController
+  before_action :check_signin
+
   def new
     @band = Band.new
     render :new

@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :check_signin
+
   def new
     @album = Album.new
     @bands = Band.all

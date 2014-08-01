@@ -1,4 +1,6 @@
 class TracksController < ApplicationController
+  before_action :check_signin
+
   def new
     @track = Track.new
     @albums = Album.all
