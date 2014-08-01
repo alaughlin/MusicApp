@@ -1,0 +1,18 @@
+<% @header = @band.persisted? ? "Edit Band" : "New Band" %>
+<% @action = @band.persisted? ? band_url(@band) : bands_url %>
+<% @method = @band.persisted? ? "put" : "post" %>
+<% @button_label = @band.persisted? ? "Edit Band" : "Create Band" %>
+
+<h1><%= @header %></h1>
+<form action="<%= @action %>" method="post">
+ <input type="hidden" name="_method" value="<%= @method %>">
+ <%= auth_token %>
+
+ <label>
+   Band Name
+   <input type="text" name="band[name]" value="<%= @band.name %>">
+ </label>
+ <br>
+
+ <button><%= @button_label %></button>
+</form>

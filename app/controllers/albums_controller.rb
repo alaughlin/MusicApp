@@ -9,18 +9,20 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
+    @band = @album.band
     if @album.save
       redirect_to album_url(@album)
     else
       flash[:errors] = @album.errors.full_messages
-      #redirect_to new_band_album_url(@band)
+      @bands = Band.all
+      render :new
     end
   end
 
   def update
     @album = Album.find(params[:id])
     if @album.update(album_params)
-      redirect_to album_url(@album)
+      redirect_to band_url(@album.band)
     else
       flash[:errors] = @album.errors.full_messages
       redirect_to edit_album_url
@@ -39,8 +41,8 @@ class AlbumsController < ApplicationController
 
   def show
     @album = Album.find(params[:id])
-    @album_band = @album.band
-    @album_tracks = @album.tracks.order(:track_number)
+    @band = @album.band
+    @tracks = @album.tracks.order(:track_number)
     render :show
   end
 

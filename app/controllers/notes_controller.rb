@@ -5,12 +5,13 @@ class NotesController < ApplicationController
     @note = Note.new(note_params)
     @note.user_id = current_user.id
     @note.track_id = params[:track_id]
+    @track = @note.track
     if @note.save
-      @track = Track.find(params[:track_id])
       redirect_to track_url(@track)
     else
-      flash[:error] = @note.errors.full_messages
+      flash[:errors] = @note.errors.full_messages
       redirect_to track_url(@track)
+      #fail
     end
   end
 

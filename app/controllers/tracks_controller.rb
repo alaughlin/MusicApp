@@ -3,7 +3,7 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
-    @albums = Album.all
+    @albums = Album.find(params[:album_id]).band.albums
     render :new
   end
 
@@ -13,8 +13,8 @@ class TracksController < ApplicationController
     if @track.save
       redirect_to album_url(@album)
     else
-      flash[:errors] = @album.errors.full_messages
-      redirect_to new_album_track(@album)
+      flash[:errors] = @track.errors.full_messages
+      redirect_to new_album_track_url(@album)
     end
   end
 
@@ -42,7 +42,8 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    @album = Album.find(@track.album_id)
+    @album = @track.album
+    @band = @album.band
     @notes = Note.includes(:user).where(track_id: @track.id)
     @note = Note.new
     render :show

@@ -7,5 +7,6 @@
 
 <%= yield %>
 
+<%= button_to "Logout", session_url, method: :delete unless current_user %>
 </body>
 </html>

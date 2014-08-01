@@ -1,14 +1,7 @@
-<h1>Edit <%= @band.name %></h1>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error|%>
+    <%= error %><br />
+  <% end %>
+<% end %>
 
-<form action="<%= band_url(@band) %>" method="post">
-  <input type="hidden" name="_method" value="patch">
-  <%= auth_token %>
-
-  <label>
-    Band Name
-    <input type="text" name="band[name]" value="<%= @band.name %>">
-  </label>
-  <br>
-
-  <button>Edit Band</button>
-</form>
+<%= render partial: "form" %>

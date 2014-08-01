@@ -1,5 +1,6 @@
 class Note < ActiveRecord::Base
   validates :user_id, :track_id, :text, presence: true
+  validates :user_id, uniqueness: { scope: :track_id }
 
   belongs_to(
     :user,

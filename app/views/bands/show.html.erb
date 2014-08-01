@@ -1,10 +1,12 @@
-<h1><%= @band.name %>'s Albums</h1>
+<h3><a href="<%= bands_url %>">All Bands</a> > <%= @band.name %></h3>
 
 <table>
   <th align="left">Title</th>
-  <% @band_albums.each do |album| %>
+  <th align="left">Recording Type</th>
+  <% @albums.each do |album| %>
   <tr>
     <td><a href="<%= album_url(album) %>"><%= album.title %></a></td>
+    <td><%= album.recording_type %></td>
     <td><%= button_to "Edit", edit_album_url(album), :method => :get %><td>
     <td><%= button_to "Delete", album_url(album), :method => :delete %><td>
   </tr>
@@ -12,7 +14,4 @@
 </table>
 <br>
 
-<a href="<%= new_band_album_url(@band) %>">Add Album</a>
-<br>
-
-<a href="<%= bands_url %>">Back To Bands Index</a>
+<a href="<%= new_band_album_url(@band) %>">Add New Album</a>

@@ -19,15 +19,15 @@
   <label>
     Recording Type:
     <br>
-    <label>
-      Live
-      <input type="radio" name="album[recording_type]" value="Live">
-    </label>
-
-    <label>
-      Studio
-      <input type="radio" name="album[recording_type]" value="Studio">
-    </label>
+    <% Album::RECORDING_TYPES.each do |rec_type| %>
+      <label>
+        <%= rec_type %>
+        <input type="radio"
+        name="album[recording_type]"
+        value="<%= rec_type %>"
+        <%= "checked" if @album.recording_type == rec_type %>>
+      </label>
+    <% end %>
   </label>
   <br>
 

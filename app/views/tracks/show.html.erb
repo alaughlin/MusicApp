@@ -1,4 +1,11 @@
-<h1><%= @track.title %></h1>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <%= error %><br>
+  <% end %>
+<% end %>
+
+<h3><a href="<%= bands_url %>">All Bands</a> > <a href="<%= band_url(@band) %>"><%= @band.name %></a> > <a href="<%= album_url(@album) %>"><%= @album.title %></a> > <%= @track.title %></h3>
+
 
 <h2>Lyrics:</h2>
 <%= ugly_lyrics(@track.lyrics) %>
@@ -6,4 +13,3 @@
 <%= render partial: "notes/note" %>
 <%= render partial: "notes/form" %>
 
-<a href="<%= album_url(@album) %>">Back to <%= @album.title %></a>

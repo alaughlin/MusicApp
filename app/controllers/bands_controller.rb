@@ -23,7 +23,7 @@ class BandsController < ApplicationController
       redirect_to band_url(@band)
     else
       flash[:errors] = @band.errors.full_messages
-      redirect_to band_url(@band)
+      redirect_to edit_band_url(@band)
     end
   end
 
@@ -39,7 +39,7 @@ class BandsController < ApplicationController
 
   def show
     @band = Band.find(params[:id])
-    @band_albums = @band.albums
+    @albums = @band.albums
     render :show
   end
 

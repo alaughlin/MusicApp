@@ -3,5 +3,7 @@
 <form action="<%= track_notes_url(@track) %>" method="post">
   <%= auth_token %>
   <textarea name="note[text]"></textarea>
+
+  <br>
   <button>Submit</button>
 </form>

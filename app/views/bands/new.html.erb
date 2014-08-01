@@ -4,16 +4,4 @@
   <% end %>
 <% end %>
 
-<h1>Create A Band</h1>
-
-<form action="<%= bands_url %>" method="post">
-  <%= auth_token %>
-
-  <label>
-    Band Name
-    <input type="text" name="band[name]" value="<%= @band.name %>">
-  </label>
-  <br>
-
-  <button>Create Band</button>
-</form>
+<%= render partial: "form" %>
