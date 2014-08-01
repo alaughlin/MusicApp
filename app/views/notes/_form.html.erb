@@ -1,0 +1,7 @@
+<h2>New Note:</h2>
+
+<form action="<%= track_notes_url(@track) %>" method="post">
+  <%= auth_token %>
+  <textarea name="note[text]"></textarea>
+  <button>Submit</button>
+</form>

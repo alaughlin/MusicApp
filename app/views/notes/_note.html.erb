@@ -1,0 +1,14 @@
+<h2>Notes:</h2>
+<table>
+  <th align="left">Note</th>
+  <th align="left">Author</th>
+  <% @notes.each do |note| %>
+    <tr>
+      <td><%= note.text %></td>
+      <td><%= note.user.email %></td>
+      <% if current_user == note.user %>
+        <td><%= button_to "Delete", track_note_url(@track, note), :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

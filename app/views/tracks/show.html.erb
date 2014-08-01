@@ -1,0 +1,6 @@
+<h1><%= @track.title %></h1>
+
+<%= render partial: "notes/note" %>
+<%= render partial: "notes/form" %>
+
+<a href="<%= album_url(@album) %>">Back to <%= @album.title %></a>

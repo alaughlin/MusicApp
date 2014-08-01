@@ -39,9 +39,10 @@ class TracksController < ApplicationController
   end
 
   def show
-    @album = Album.find(params[:id])
-    @album_band = @album.band
-    @album_tracks = @album.tracks
+    @track = Track.find(params[:id])
+    @album = Album.find(@track.album_id)
+    @notes = Note.includes(:user).where(track_id: @track.id)
+    @note = Note.new
     render :show
   end
 
