@@ -1,4 +1,4 @@
-<h1>Add Track</h1>
+<h3><a href="<%= bands_url %>">All Bands</a> > <a href="<%= band_url(@band) %>"><%= @band.name %></a> > <a href="<%= album_url(@album) %>"><%= @album.title %></a> > Add Track</h3>
 
 <form action="<%= tracks_url %>" method="post">
   <%= auth_token %>

@@ -3,7 +3,12 @@
 <% @method = @band.persisted? ? "put" : "post" %>
 <% @button_label = @band.persisted? ? "Edit Band" : "Create Band" %>
 
-<h1><%= @header %></h1>
+<h3><a href="<%= bands_url %>">All Bands</a>
+  <% if @band.persisted? %>
+    > <a href="<%= @action %>"><%= @band.name  %></a>
+  <% end %>
+  > <%= @header %></h3>
+
 <form action="<%= @action %>" method="post">
  <input type="hidden" name="_method" value="<%= @method %>">
  <%= auth_token %>

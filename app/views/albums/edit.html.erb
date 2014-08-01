@@ -1,4 +1,4 @@
-<h1>Edit <%= @album.title %></h1>
+<h3><a href="<%= bands_url %>">All Bands</a> > <a href="<%= band_url(@band) %>"><%= @band.name %></a> > <a href="<%= album_url(@album) %>"><%= @album.title %></a> > Edit</h3>
 
 <form action="<%= album_url(@album) %>" method="post">
   <input type="hidden" name="_method" value="patch">
