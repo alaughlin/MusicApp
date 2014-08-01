@@ -1,9 +1,3 @@
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error|%>
-    <%= error %><br />
-  <% end %>
-<% end %>
-
 <h1>Edit <%= @album.title %></h1>
 
 <form action="<%= album_url(@album) %>" method="post">

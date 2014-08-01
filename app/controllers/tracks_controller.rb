@@ -52,6 +52,8 @@ class TracksController < ApplicationController
   def edit
     @track = Track.find(params[:id])
     @albums = Album.all
+    @album = @track.album
+    @band = @album.band
     render :edit
   end
 

@@ -1,10 +1,4 @@
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error|%>
-    <%= error %><br />
-  <% end %>
-<% end %>
-
-<h1>Edit Track</h1>
+<h3><a href="<%= bands_url %>">All Bands</a> > <a href="<%= band_url(@band) %>"><%= @band.name %></a> > <a href="<%= album_url(@album) %>"><a href="<%= album_url(@album) %>"><%= @album.title %></a> > <a href="<%= track_url(@track) %>"><%= @track.title %></a> > Edit</h3>
 
 <form action="<%= track_url(@track) %>" method="post">
   <input type="hidden" name="_method" value="put">

@@ -11,4 +11,12 @@ module ApplicationHelper
     res = lyrics.split("\r\n").map { |line| "♫ #{h(line)}" }.join("\n")
     "<pre>#{res}</pre>".html_safe
   end
+
+  def print_errors
+    if flash[:errors]
+      flash[:errors].each do |error|
+        puts error
+      end
+    end
+  end
 end
