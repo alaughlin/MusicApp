@@ -1,5 +1,8 @@
 <h1><%= @track.title %></h1>
 
+<h2>Lyrics:</h2>
+<%= ugly_lyrics(@track.lyrics) %>
+
 <%= render partial: "notes/note" %>
 <%= render partial: "notes/form" %>
 
