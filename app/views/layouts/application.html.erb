@@ -4,14 +4,17 @@
   <title>MusicApp</title>
 </head>
 <body>
-<% if flash[:errors] %>
-  <% flash[:errors].each do |error|%>
-    <%= error %><br />
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error|%>
+      <%= error %><br />
+    <% end %>
   <% end %>
-<% end %>
 
-<%= yield %>
+  <div style="float: right;">
+    <%= current_user.email if current_user %>
+    <%= button_to "Logout", session_url, method: :delete if current_user %>
+  </div>
 
-<%= button_to "Logout", session_url, method: :delete unless current_user %>
+  <%= yield %>
 </body>
 </html>
